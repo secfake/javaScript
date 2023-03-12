@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text-bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading">Bài tập thực hành DOM</h1>
+    <p class="para para-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p class="para para-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <p class="para para-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <div class="content">
+        <h2 id="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptatibus sint molestias sit odit quia labore alias! Accusamus magnam aperiam officiis? Laboriosam numquam at eum dicta quos temporibus in aliquid?</p>
+    </div>
+    
+    <script>
+            let h1 = document.getElementById('heading');
+            h1.style.color = 'red';
+            h1.style.textTransform = 'uppercase';
+            
+            let para = document.getElementsByClassName('para');
+            Array.from(para).map(function(e){
+                e.style.color = 'blue';
+                e.style.fontSize = '20px';
+            });
+
+            let para3 = document.getElementsByClassName('para-3');
+            para3[0].insertAdjacentHTML('afterend','<a href="https://facebook.com">facebook</a>');
+
+            let title = document.getElementById('title');
+            title.innerText = 'Đây là thẻ tiêu đề'
+
+            let description = document.getElementsByClassName('description');
+            description[0].classList.add('text-bold');
+
+            let newElement = document.createElement('button');
+            newElement.textContent='Click me';
+            para3[0].parentNode.replaceChild(newElement, para3[0]);;
+            
+
+            let para2 = document.getElementsByClassName('para-2');
+            const paraCopy = para2[0].cloneNode(true);
+            para2[0].insertAdjacentElement('afterend', paraCopy);
+
+            let para1 = document.querySelector('.para-1');
+            para1.parentNode.removeChild(para1);
+
+    </script>
+</body>
+</html>
